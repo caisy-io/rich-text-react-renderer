@@ -5,10 +5,13 @@ module.exports = {
         [
             '@babel/preset-env',
             {
+
                 corejs: '3',
-                loose: true,
                 modules: 'auto',
-                targets: ['last 2 versions', 'ie >= 11'],
+                targets: [
+                    "defaults",
+                    "not IE 11",
+                ],
                 useBuiltIns: 'usage',
             },
         ],
