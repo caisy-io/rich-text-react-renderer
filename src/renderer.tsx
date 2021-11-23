@@ -11,6 +11,7 @@ import OrderedList from "./nodes/OrderedList";
 import Paragraph from "./nodes/Paragraph";
 import Table from "./nodes/Table";
 import TableCel from "./nodes/TableCell";
+import TableHeader from "./nodes/TableHeader";
 import TableRow from "./nodes/TableRow";
 import Text from "./nodes/Text";
 
@@ -26,6 +27,7 @@ export type ElementType =
   | "heading"
   | "iframe"
   | "table"
+  | "tableHeader"
   | "tableRow"
   | "tableCell"
   | "text";
@@ -43,6 +45,7 @@ export const DEFAULT_BLOCK_MAP: Record<ElementType, FC<{ node: any }>> = {
   iframe: IFrame,
   table: Table,
   tableRow: TableRow,
+  tableHeader: TableHeader,
   tableCell: TableCel,
   text: Text,
 };
