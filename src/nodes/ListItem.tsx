@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-
-const ListItem: FC = ({ children }) => <li>{children}</li>;
+import { attrsToStyle } from "../transformer/attrsToStyle";
+const ListItem: FC<{ node: any }> = ({ children, node: { attrs } }) => <li style={attrsToStyle(attrs)}>{children}</li>;
 
 export default ListItem;

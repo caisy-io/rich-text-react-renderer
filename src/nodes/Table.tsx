@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 
-const Table: FC = ({ children }) => (
+import { attrsToStyle } from "../transformer/attrsToStyle";
+const Table: FC<{ node: any }> = ({ children, node: { attrs } }) => (
   <table>
-    <tbody>{children}</tbody>
+    <tbody style={attrsToStyle(attrs)}>{children}</tbody>
   </table>
 );
 

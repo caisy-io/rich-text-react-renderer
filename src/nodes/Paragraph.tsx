@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 
-const Paragraph: FC = ({ children }) => <p>{children}</p>;
+import { attrsToStyle } from "../transformer/attrsToStyle";
+const Paragraph: FC<{ node: any }> = ({ children, node: { attrs } }) => <p style={attrsToStyle(attrs)}>{children}</p>;
 
 export default Paragraph;

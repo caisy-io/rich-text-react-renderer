@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 
-const BulletList: FC = ({ children }) => <ul>{children}</ul>;
+import { attrsToStyle } from "../transformer/attrsToStyle";
+const BulletList: FC<{ node: any }> = ({ children, node: { attrs } }) => <ul style={attrsToStyle(attrs)}>{children}</ul>;
 
 export default BulletList;

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
 
-const TableHeader: FC = ({ children }) => <td>{children}</td>;
+const TableHeader: FC = ({ children }) => <th>{children}</th>;
 
 export default TableHeader;

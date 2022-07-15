@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 
-const TableCel: FC = ({ children }) => <td>{children}</td>;
+import { attrsToStyle } from "../transformer/attrsToStyle";
+const TableCel: FC<{ node: any }> = ({ children, node: { attrs } }) => <td style={attrsToStyle(attrs)}>{children}</td>;
 
 export default TableCel;
