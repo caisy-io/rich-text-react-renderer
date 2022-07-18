@@ -1,6 +1,6 @@
 export const attrsToStyle = (attrs: any) => {
     let style: any = {};
-    if(attrs.textAlign) {
+    if(attrs && attrs.textAlign) {
         style.textAlign = attrs.textAlign;
     }
 
