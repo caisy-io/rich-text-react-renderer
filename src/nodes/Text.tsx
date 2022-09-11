@@ -7,7 +7,7 @@ const Mark: FC<{ mark: Marks; attrs: any }> = ({ mark, attrs, children }) => {
     case "bold":
       return <strong>{children}</strong>;
     case "code":
-      return <pre>{children}</pre>;
+      return <code>{children}</code>;
     case "italic":
       return <em>{children}</em>;
     case "strike":
