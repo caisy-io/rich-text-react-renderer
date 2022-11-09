@@ -3,6 +3,7 @@ import BlockQuote from "./nodes/BlockQuote";
 import BulletList from "./nodes/BulletList";
 import CodeBlock from "./nodes/CodeBlock";
 import Doc from "./nodes/Doc";
+import DocumentLink from "./nodes/DocumentLink";
 import HardBreak from "./nodes/HardBreak";
 import Heading from "./nodes/Heading";
 import IFrame from "./nodes/IFrame";
@@ -30,6 +31,7 @@ export type ElementType =
   | "tableHeader"
   | "tableRow"
   | "tableCell"
+  | "documentLink"
   | "text";
 
 export const DEFAULT_BLOCK_MAP: Record<ElementType, FC<{ node: any }>> = {
@@ -48,12 +50,13 @@ export const DEFAULT_BLOCK_MAP: Record<ElementType, FC<{ node: any }>> = {
   tableHeader: TableHeader,
   tableCell: TableCel,
   text: Text,
+  documentLink: DocumentLink
 };
 
 export const documentRenderer = (blockMap: Record<ElementType, FC<{ node: any }>>) => {
   const BLOCKS = { ...DEFAULT_BLOCK_MAP, ...blockMap };
 
-  const renderNode = (currNode: any, level?: number) => {
+  const renderNode = (currNode: any, currNodeIndex?: number, parentPath?: string) => {
     const Element = BLOCKS[currNode.type];
 
     if (!Element) {
@@ -61,9 +64,11 @@ export const documentRenderer = (blockMap: Record<ElementType, FC<{ node: any }>
       return null;
     }
 
+    const path = (parentPath ? parentPath + "-" : "") + currNodeIndex;
+
     return (
-      <Element key={`node-${currNode.type}-${level}`} node={currNode}>
-        {currNode.content?.map(renderNode)}
+      <Element key={`node-${currNode.type}-${path}`} node={currNode} path={path}>
+        {currNode.content?.map((node, index) => renderNode(node, index, path))}
       </Element>
     );
   };
